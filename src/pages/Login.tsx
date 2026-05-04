@@ -80,6 +80,23 @@ export default function Login() {
           </Button>
         </form>
 
+        <div className="mt-5 grid gap-3 text-sm">
+          <div className="rounded-xl border border-border bg-muted/40 px-4 py-3">
+            <p className="font-semibold text-foreground">Admin demo login</p>
+            <p className="mt-1 text-muted-foreground">
+              Username: <span className="font-medium text-foreground">admin</span>
+              {" "}Password: <span className="font-medium text-foreground">admin123</span>
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-muted/40 px-4 py-3">
+            <p className="font-semibold text-foreground">User demo login</p>
+            <p className="mt-1 text-muted-foreground">
+              Username: <span className="font-medium text-foreground">user</span>
+              {" "}Password: <span className="font-medium text-foreground">user123</span>
+            </p>
+          </div>
+        </div>
+
         <div className="mt-6 text-center text-sm text-muted-foreground">
           Don't have an account?{" "}
           <Link href="/register" className="text-primary font-semibold hover:underline">
