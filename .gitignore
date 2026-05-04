@@ -1,0 +1,20 @@
+# dependencies
+node_modules/
+
+# production build
+dist/
+build/
+
+# local environment
+.env
+.env.*
+!.env.example
+
+# tool output
+*.tsbuildinfo
+coverage/
+.vercel/
+
+# system files
+.DS_Store
+Thumbs.db
