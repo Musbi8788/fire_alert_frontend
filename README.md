@@ -92,7 +92,7 @@ VITE_API_BASE_URL=http://localhost:8080
 Production example:
 
 ```env
-VITE_API_BASE_URL=https://your-railway-backend.up.railway.app
+VITE_API_BASE_URL=https://fire-alert-backend-production.up.railway.app
 ```
 
 If `VITE_API_BASE_URL` is not set, the app falls back to same-origin `/api` requests. For this deployment setup, set it explicitly because the frontend runs on Vercel and the backend runs on Railway.
@@ -125,7 +125,7 @@ The included `vercel.json` configures:
 Set this Vercel environment variable:
 
 ```env
-VITE_API_BASE_URL=https://your-railway-backend.up.railway.app
+VITE_API_BASE_URL=https://fire-alert-backend-production.up.railway.app
 ```
 
 The Railway backend must allow the Vercel frontend through CORS:
