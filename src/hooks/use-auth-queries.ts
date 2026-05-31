@@ -1,9 +1,8 @@
-import { useAuth } from "@/lib/auth-context";
-import { 
-  useGetUserReports, 
-  useCreateReport, 
-  useGetAdminReports, 
-  useUpdateReportStatus, 
+import {
+  useGetUserReports,
+  useCreateReport,
+  useGetAdminReports,
+  useUpdateReportStatus,
   useGetAdminStats,
   type GetAdminReportsParams,
   type CreateReportRequest,
@@ -11,29 +10,18 @@ import {
 } from "@workspace/api-client-react";
 import { useQueryClient } from "@tanstack/react-query";
 
-// Helper hook to inject auth headers into Orval queries/mutations
-function useAuthHeaders() {
-  const { token } = useAuth();
-  return {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  };
-}
+// Auth headers are attached globally by the API client's auth-token getter,
+// configured once in src/main.tsx (reads `fire_alert_token` from localStorage).
+// These hooks only add query keys, polling, and cache invalidation.
 
 export function useMyReports() {
-  const headers = useAuthHeaders();
-  return useGetUserReports({
-    request: headers
-  });
+  return useGetUserReports();
 }
 
 export function useSubmitReport() {
-  const headers = useAuthHeaders();
   const queryClient = useQueryClient();
-  
+
   const mutation = useCreateReport({
-    request: headers,
     mutation: {
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ["/api/reports"] });
@@ -48,9 +36,7 @@ export function useSubmitReport() {
 }
 
 export function useAdminReports(params?: GetAdminReportsParams) {
-  const headers = useAuthHeaders();
   return useGetAdminReports(params, {
-    request: headers,
     query: {
       queryKey: ["/api/admin/reports", params],
       refetchInterval: 10000, // Poll every 10 seconds
@@ -59,9 +45,7 @@ export function useAdminReports(params?: GetAdminReportsParams) {
 }
 
 export function useAdminStats() {
-  const headers = useAuthHeaders();
   return useGetAdminStats({
-    request: headers,
     query: {
       queryKey: ["/api/admin/stats"],
       refetchInterval: 10000,
@@ -70,11 +54,9 @@ export function useAdminStats() {
 }
 
 export function useAdminUpdateStatus() {
-  const headers = useAuthHeaders();
   const queryClient = useQueryClient();
-  
+
   const mutation = useUpdateReportStatus({
-    request: headers,
     mutation: {
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ["/api/admin/reports"] });

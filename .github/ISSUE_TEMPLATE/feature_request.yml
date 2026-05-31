@@ -1,0 +1,47 @@
+name: ✨ Feature Request
+description: Suggest a new feature or improvement for the frontend.
+title: "feat: <short description>"
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the idea! Please search [existing issues](../) first to avoid duplicates. For non-trivial changes, opening this issue before a PR helps us agree on direction.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the problem or need, not just the solution. What can't you do today?
+      placeholder: As a user, I can't... / Admins have no way to...
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What would you like to see happen?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any other approaches you thought about?
+    validations:
+      required: false
+  - type: textarea
+    id: mockups
+    attributes:
+      label: Mockups / references
+      description: Screenshots, sketches, or links to similar implementations (optional).
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues and this is not a duplicate.
+          required: true
+        - label: This is a frontend feature (backend changes belong in the backend repo).
+          required: false
