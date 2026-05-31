@@ -57,7 +57,7 @@ export default function Login() {
             <Shield className="w-8 h-8 text-primary" />
           </div>
           <h1 className="text-3xl font-display font-bold">Welcome Back</h1>
-          <p className="text-muted-foreground mt-2">Sign in to your FireAlert account</p>
+          <p className="text-muted-foreground mt-2">Sign in to your FireAlertGM account</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
